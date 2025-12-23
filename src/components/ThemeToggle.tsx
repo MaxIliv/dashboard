@@ -1,12 +1,12 @@
-import { useThemeContext } from "../app/providers/ThemeProvider"
+import { useTheme } from "../app/providers/ThemeProvider"
 
 
 export function ThemeToggle() {
-  const { theme, toggle } = useThemeContext()
+  const { theme, toggleTheme } = useTheme()
 
   return (
     <button
-      onClick={toggle}
+      onClick={toggleTheme}
       className="rounded-full cursor-pointer px-3 py-2 text-sm"
     >
       {theme === 'light' ? '☀️' : '🌙'}
