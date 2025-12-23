@@ -7,6 +7,7 @@ export default defineConfig([
     files: ['**/*.{ts,tsx}'],
     rules: {
       '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/consistent-type-definitions': ['off', 'type'],
     },
     extends: [
       // Other configs...
