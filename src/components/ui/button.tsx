@@ -53,7 +53,6 @@ function Button({
       data-slot="button"
       data-variant={variant}
       data-size={size}
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />
