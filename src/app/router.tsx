@@ -1,5 +1,6 @@
 import MainLayout from '@/layouts/MainLayout';
 import Home from '@/pages/Home';
+import NotFoundPage from '@/pages/not-found/NotFoundPage';
 import { createBrowserRouter } from 'react-router';
 
 export const router = createBrowserRouter([
@@ -16,5 +17,9 @@ export const router = createBrowserRouter([
         element: <h1>World!</h1>,
       },
     ],
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />,
   },
 ]);
