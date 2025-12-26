@@ -21,7 +21,14 @@ export function createAuthService(
         password,
         expiresInMins: DEFAULT_EXPIRATION,
       })
-      .then((res) => res.data);
+      .then((res) => {
+        tokenStorage.set({
+          accessToken: res.data.accessToken,
+          refreshToken: res.data.refreshToken,
+        });
+
+        return res.data;
+      });
   };
 
   const logout = () => {

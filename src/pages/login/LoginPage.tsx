@@ -1,4 +1,5 @@
-import { Button } from "@/components/ui/button"
+import { useAuthContext } from '@/app/providers/AuthProvider';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -6,11 +7,23 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { useNavigate } from 'react-router';
 
 export default function LoginPage() {
+  const { login } = useAuthContext();
+  const navigate = useNavigate();
+
+  function handleLogin() {
+    login({ username: 'emilys', password: 'emilyspass' })
+      .then(() => navigate('/'))
+      .catch(() => {
+        console.error('Failed to Login');
+      });
+  }
+
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
@@ -35,16 +48,21 @@ export default function LoginPage() {
               <div className="flex items-center">
                 <Label htmlFor="password">Password</Label>
               </div>
-              <Input id="password" type="password" placeholder="Enter password" required />
+              <Input
+                id="password"
+                type="password"
+                placeholder="Enter password"
+                required
+              />
             </div>
           </div>
         </form>
       </CardContent>
       <CardFooter className="flex-col gap-2">
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full" onClick={handleLogin}>
           Login
         </Button>
       </CardFooter>
     </Card>
-  )
+  );
 }
