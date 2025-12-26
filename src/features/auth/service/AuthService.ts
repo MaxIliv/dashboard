@@ -15,11 +15,13 @@ export function createAuthService(
     username,
     password,
   }: AuthPayload): Promise<AuthResponse> => {
-    return client.post('/auth/login', {
-      username,
-      password,
-      expiresInMins: DEFAULT_EXPIRATION,
-    });
+    return client
+      .post<AuthResponse>('/auth/login', {
+        username,
+        password,
+        expiresInMins: DEFAULT_EXPIRATION,
+      })
+      .then((res) => res.data);
   };
 
   const logout = () => {
