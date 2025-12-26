@@ -1,14 +1,11 @@
-import DashboardLayout from "../layouts/DashboardLayout";
+import { RouterProvider } from 'react-router';
 import { ThemeProvider } from "./providers/ThemeProvider";
+import { router } from './router';
 
 function App() {
   return (
     <ThemeProvider>
-      <DashboardLayout>
-        <section className="p-4 rounded-md border border-zinc-200 shadow-md">
-          <h1 className="text-3xl font-bold underline">Hello World!</h1>
-        </section>
-      </DashboardLayout>
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 }
