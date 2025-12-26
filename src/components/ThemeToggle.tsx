@@ -1,6 +1,6 @@
-import { MoonStarIcon, SunDimIcon } from "lucide-react"
-import { useTheme } from "../app/providers/ThemeProvider"
-import { Button } from "./ui/button"
+import { MoonStarIcon, SunDimIcon } from 'lucide-react'
+import { useTheme } from '@/app/providers/ThemeProvider'
+import { Button } from "@/components/ui/button"
 
 
 export function ThemeToggle() {
