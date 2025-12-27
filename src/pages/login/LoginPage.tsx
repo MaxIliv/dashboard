@@ -10,54 +10,46 @@ import {
 import { FieldError } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import type { AuthPayload } from '@/features/auth/types';
-import { isAxiosError } from 'axios';
-import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router';
+import { Controller, useForm } from 'react-hook-form';
+import { schema, type LoginFormSchema } from './schema';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { isAxiosError } from 'axios';
 
 export default function LoginPage() {
-  const [form, setForm] = useState<AuthPayload>({
-    username: '',
-    password: '',
+  const {
+    control,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm<LoginFormSchema>({
+    defaultValues: {
+      username: '',
+      password: '',
+    },
+    resolver: zodResolver(schema),
   });
-
-  const [error, setError] = useState('');
-
-  function handleUsername(username: string) {
-    setForm((form) => ({
-      ...form,
-      username,
-    }));
-  }
-  function handlePassword(password: string) {
-    setForm((form) => ({
-      ...form,
-      password,
-    }));
-  }
 
   const { login } = useAuthContext();
   const navigate = useNavigate();
 
-  function handleLogin(e: FormEvent) {
-    e.preventDefault();
-    setError('');
+  async function handleLogin(data: LoginFormSchema) {
+    try {
+      await login(data);
+      await navigate('/');
+    } catch (err) {
+      if (isAxiosError<{ message: string }>(err)) {
+        const message =
+          err.response?.data.message ?? 'Wrong username or password';
 
-    login(form)
-      .then(() => navigate('/'))
-      .catch((e: unknown) => {
-        if (
-          isAxiosError<{
-            message: string;
-            code?: string;
-          }>(e)
-        ) {
-          const message = e.response?.data.message ?? 'Failed to login';
-          setError(message);
-        }
-        console.error('Failed to Login');
-      });
+        setError('root', { message });
+      } else {
+        setError('root', { message: 'Failed to login' });
+      }
+    }
   }
+
+  const onSubmit = handleSubmit(handleLogin);
 
   return (
     <Card className="w-full max-w-sm">
@@ -68,41 +60,67 @@ export default function LoginPage() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={(e) => void onSubmit(e)}>
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
-              <Label htmlFor="username">User Name</Label>
-              <Input
-                id="username"
-                type="username"
-                placeholder="Enter a username"
-                value={form.username}
-                onChange={(e) => {
-                  handleUsername(e.target.value);
-                }}
-                required
+              <Controller
+                name="username"
+                control={control}
+                rules={{ required: true }}
+                render={({ field, fieldState }) => (
+                  <>
+                    <Label htmlFor="username">User Name</Label>
+                    <Input
+                      id="username"
+                      type="username"
+                      placeholder="Enter a username"
+                      value={field.value}
+                      onChange={(e) => {
+                        field.onChange(e.target.value);
+                      }}
+                      required
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </>
+                )}
               />
             </div>
             <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-              </div>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Enter password"
-                value={form.password}
-                onChange={(e) => {
-                  handlePassword(e.target.value);
-                }}
-                required
+              <Controller
+                name="password"
+                control={control}
+                rules={{ required: true }}
+                render={({ field, fieldState }) => (
+                  <>
+                    <Label htmlFor="password">Password</Label>
+                    <Input
+                      id="password"
+                      type="password"
+                      placeholder="Enter password"
+                      value={field.value}
+                      autoComplete="new-password"
+                      onChange={(e) => {
+                        field.onChange(e.target.value);
+                      }}
+                      required
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </>
+                )}
               />
             </div>
 
             <Button type="submit" className="w-full">
               Login
             </Button>
-            {error && <FieldError>{error}</FieldError>}
+
+            {errors.root?.message && (
+              <FieldError>{errors.root.message}</FieldError>
+            )}
           </div>
         </form>
       </CardContent>
