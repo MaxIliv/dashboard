@@ -4,22 +4,57 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { FieldError } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import type { AuthPayload } from '@/features/auth/types';
+import { isAxiosError } from 'axios';
+import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router';
 
 export default function LoginPage() {
+  const [form, setForm] = useState<AuthPayload>({
+    username: '',
+    password: '',
+  });
+
+  const [error, setError] = useState('');
+
+  function handleUsername(username: string) {
+    setForm((form) => ({
+      ...form,
+      username,
+    }));
+  }
+  function handlePassword(password: string) {
+    setForm((form) => ({
+      ...form,
+      password,
+    }));
+  }
+
   const { login } = useAuthContext();
   const navigate = useNavigate();
 
-  function handleLogin() {
-    login({ username: 'emilys', password: 'emilyspass' })
+  function handleLogin(e: FormEvent) {
+    e.preventDefault();
+    setError('');
+
+    login(form)
       .then(() => navigate('/'))
-      .catch(() => {
+      .catch((e: unknown) => {
+        if (
+          isAxiosError<{
+            message: string;
+            code?: string;
+          }>(e)
+        ) {
+          const message = e.response?.data.message ?? 'Failed to login';
+          setError(message);
+        }
         console.error('Failed to Login');
       });
   }
@@ -33,7 +68,7 @@ export default function LoginPage() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
               <Label htmlFor="username">User Name</Label>
@@ -41,6 +76,10 @@ export default function LoginPage() {
                 id="username"
                 type="username"
                 placeholder="Enter a username"
+                value={form.username}
+                onChange={(e) => {
+                  handleUsername(e.target.value);
+                }}
                 required
               />
             </div>
@@ -52,17 +91,21 @@ export default function LoginPage() {
                 id="password"
                 type="password"
                 placeholder="Enter password"
+                value={form.password}
+                onChange={(e) => {
+                  handlePassword(e.target.value);
+                }}
                 required
               />
             </div>
+
+            <Button type="submit" className="w-full">
+              Login
+            </Button>
+            {error && <FieldError>{error}</FieldError>}
           </div>
         </form>
       </CardContent>
-      <CardFooter className="flex-col gap-2">
-        <Button type="submit" className="w-full" onClick={handleLogin}>
-          Login
-        </Button>
-      </CardFooter>
     </Card>
   );
 }
