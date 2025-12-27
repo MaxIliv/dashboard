@@ -36,6 +36,8 @@ export default defineConfig([
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/no-unsafe-return': 'off',
+      '@typescript-eslint/array-type': 'off',
+      '@typescript-eslint/no-unnecessary-condition': 'off',
     },
   },
 ]);
