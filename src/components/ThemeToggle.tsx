@@ -9,7 +9,7 @@ export function ThemeToggle() {
   return (
     <Button
       onClick={toggleTheme}
-      variant='outline'
+      variant='ghost'
       size="icon"
       className="rounded-full cursor-pointer"
     >
