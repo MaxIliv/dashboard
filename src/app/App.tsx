@@ -6,6 +6,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { queryClient } from '@/shared/queryClient';
 import { AppProvider } from './providers/AppProvider';
+import { ErrorBoundary } from './error-boundary';
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
       <ThemeProvider>
         <AuthProvider>
           <AppProvider>
-            <RouterProvider router={router} />
+            <ErrorBoundary>
+              <RouterProvider router={router} />
+            </ErrorBoundary>
           </AppProvider>
         </AuthProvider>
       </ThemeProvider>
