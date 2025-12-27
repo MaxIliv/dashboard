@@ -18,4 +18,10 @@ export type AuthService = {
   login: (e: AuthPayload) => Promise<AuthResponse>;
   logout: () => void;
   isAuthenticated: () => boolean;
+  refreshAuthSession: () => Promise<void>;
+}
+
+export type AuthRefreshResponse = {
+  accessToken: string;
+  refreshToken: string;
 }

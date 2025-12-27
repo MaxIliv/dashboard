@@ -1,5 +1,6 @@
 import type {
   AuthPayload,
+  AuthRefreshResponse,
   AuthResponse,
   AuthService,
 } from '@/features/auth/types';
@@ -31,6 +32,23 @@ export function createAuthService(
       });
   };
 
+  const refreshAuthSession = async () => {
+    try {
+      const res = await client.post<AuthRefreshResponse>('/auth/refresh', {
+        refreshToken: tokenStorage.getRefreshToken(),
+      });
+
+      tokenStorage.set({ ...res.data });
+    } catch (err) {
+      console.warn('failed to refresh', err);
+
+      logout();
+      window.location.reload();
+
+      throw err;
+    }
+  };
+
   const logout = () => {
     tokenStorage.clear();
   };
@@ -42,6 +60,7 @@ export function createAuthService(
   return {
     login,
     logout,
+    refreshAuthSession,
     isAuthenticated,
   };
 }

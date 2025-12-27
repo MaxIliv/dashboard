@@ -2,9 +2,11 @@
 
 import { authService } from '@/features/auth/service/AuthService';
 import type { AuthPayload, AuthResponse } from '@/features/auth/types';
+import useUser from '@/features/user/hooks/useUser';
 import { createContext, useContext, useState, type ReactNode } from 'react';
 
 type AuthContextValue = {
+  me: AuthResponse | undefined;
   isAuthenticated: boolean;
   login: (e: AuthPayload) => Promise<AuthResponse>;
   logout: () => void;
@@ -18,6 +20,8 @@ type ProviderBaseProps = {
 
 // Provider
 export function AuthProvider({ children }: ProviderBaseProps) {
+  const { data: me } = useUser();
+
   const [isAuthenticated, setIsAuthentcated] = useState(() =>
     authService.isAuthenticated()
   );
@@ -34,7 +38,7 @@ export function AuthProvider({ children }: ProviderBaseProps) {
   };
 
   return (
-    <AuthContext.Provider value={{ login, logout, isAuthenticated }}>
+    <AuthContext.Provider value={{ me, login, logout, isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );
