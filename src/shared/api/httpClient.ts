@@ -21,16 +21,31 @@ httpClient.interceptors.response.use(
   async (error: AxiosError) => {
     const originalRequest = error.config;
 
-    // @ts-expect-error _retry not exists
-    if (error.response?.status !== 401 || originalRequest?._retry || !originalRequest) {
+    if (
+      !originalRequest ||
+      error.response?.status !== 401 ||
+      // @ts-expect-error _retry not exists
+      originalRequest._retry
+    ) {
       return Promise.reject(error);
     }
 
     // @ts-expect-error _retry not exists
     originalRequest._retry = true;
 
-    await authService.refreshAuthSession();
+    const refreshToken = tokenStorage.getRefreshToken();
 
-    return httpClient(originalRequest);
+    if (!refreshToken) return Promise.reject(error);
+
+    try {
+      await authService.refreshAuthSession();
+      const newToken = tokenStorage.get();
+
+      originalRequest.headers.Authorization = `Bearer ${newToken!}`;
+
+      return await httpClient(originalRequest);
+    } catch (e) {
+      return Promise.reject(e as Error);
+    }
   }
 );

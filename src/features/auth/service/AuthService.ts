@@ -8,6 +8,7 @@ import { httpClient } from '@/shared/api/httpClient';
 import type { HTTPClient } from '@/shared/api/httpClient';
 import { DEFAULT_EXPIRATION } from '../constant';
 import { tokenStorage } from '@/shared/storage/tokenStorage';
+import axios from 'axios';
 
 export function createAuthService(
   client: HTTPClient = httpClient
@@ -34,8 +35,14 @@ export function createAuthService(
 
   const refreshAuthSession = async () => {
     try {
-      const res = await client.post<AuthRefreshResponse>('/auth/refresh', {
-        refreshToken: tokenStorage.getRefreshToken(),
+      const refreshToken = tokenStorage.getRefreshToken();
+
+      if (!refreshToken) {
+        return await Promise.reject(new Error('No refresh token'));
+      }
+
+      const res = await axios.post<AuthRefreshResponse>('https://dummyjson.com/auth/refresh', {
+        refreshToken,
       });
 
       tokenStorage.set({ ...res.data });
