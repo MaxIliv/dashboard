@@ -11,6 +11,7 @@ export const SidebarButton = ({
 }: SidebarButtonProps) => (
   <Button
     {...props}
+    title={title}
     size={collapsed ? 'icon-lg' : 'lg'}
     variant={isActive ? 'default' : 'ghost'}
     className={cn('cursor-pointer w-full', {

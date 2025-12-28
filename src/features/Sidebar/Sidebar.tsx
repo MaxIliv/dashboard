@@ -25,7 +25,7 @@ export default function Sidebar() {
       <nav className="px-2">
         <ul className="flex flex-col gap-2">
           {mainMenu.map((link) => (
-            <li key={link.title}>
+            <li key={link.title} title={link.title}>
               <NavButton {...link} collapsed={isSidebarCollapsed} />
             </li>
           ))}
