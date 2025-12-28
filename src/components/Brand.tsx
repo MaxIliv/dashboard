@@ -5,14 +5,12 @@ export default function Brand() {
   const { isSidebarCollapsed } = useAppContext();
 
   return (
-    <div className="flex gap-2 p-4">
+    <div className="flex p-4 h-16">
       <Logo size={32} />
       {!isSidebarCollapsed && (
         <>
-          <p className="text-2xl">Reface</p>
-          <sup className="text-gray-400 dark:text-gray-100 text-sm -ml-8">
-            data
-          </sup>
+          <p className="ml-2 text-2xl">Reface</p>
+          <sup className="text-gray-400 text-sm -translate-x-full leading-[1.4]">data</sup>
         </>
       )}
     </div>

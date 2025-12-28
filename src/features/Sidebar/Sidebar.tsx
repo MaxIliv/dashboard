@@ -13,7 +13,7 @@ export default function Sidebar() {
   return (
     <aside
       className={cn(
-        'p-2 w-full dark:text-gray-200 flex flex-col gap-4 relative',
+        'p-2 w-full flex flex-col gap-4 relative bg-secondary',
         {
           'max-w-64': !isSidebarCollapsed,
           'flex-0': isSidebarCollapsed,
@@ -22,7 +22,7 @@ export default function Sidebar() {
     >
       <Brand />
 
-      <nav className="p-4">
+      <nav className="px-2">
         <ul className="flex flex-col gap-2">
           {mainMenu.map((link) => (
             <li key={link.title}>
@@ -34,7 +34,7 @@ export default function Sidebar() {
 
       <div className="flex-1"></div>
 
-      <div className="p-4 flex flex-col">
+      <div className="p-2 flex flex-col">
         <SidebarButton
           {...logoutLink}
           collapsed={isSidebarCollapsed}
