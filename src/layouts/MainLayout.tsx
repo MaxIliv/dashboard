@@ -1,4 +1,4 @@
-import Sidebar from '@/components/Sidebar';
+import Sidebar from '@/features/Sidebar/Sidebar';
 import AppBar from '@/components/AppBar';
 import { Outlet } from 'react-router';
 
@@ -8,7 +8,7 @@ export default function MainLayout() {
       <Sidebar />
       <div className="flex flex-1 flex-col gap-4 p-2">
         <AppBar />
-        <main className="flex-1 dark:text-gray-200">
+        <main className="flex-1">
           <Outlet />
         </main>
       </div>
