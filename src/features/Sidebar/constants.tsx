@@ -10,23 +10,21 @@ export const mainMenu: SidebarLink[] = [
   {
     to: '/',
     title: 'Dashboard',
-    icon: <GaugeIcon />,
+    Icon: GaugeIcon,
   },
   {
     to: '/statistics',
     title: 'Statistics',
-    icon: <BarChartIcon />,
+    Icon: BarChartIcon,
   },
   {
     to: '/charts',
     title: 'Charts',
-    icon: <ChartLineIcon />,
+    Icon: ChartLineIcon,
   },
 ];
 
-
 export const logoutLink: SidebarButtonProps = {
-  isActive: false,
   title: 'Logout',
-  icon: <LogOutIcon />,
+  Icon: LogOutIcon,
 };

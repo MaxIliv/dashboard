@@ -3,8 +3,8 @@ import { useAuthContext } from '@/app/providers/AuthProvider';
 import { cn } from '@/lib/utils';
 import Brand from '../../components/Brand';
 import { NavButton } from './NavButton';
-import { SidebarButton } from './SidebarButton';
 import { logoutLink, mainMenu } from './constants';
+import { SidebarButton } from './SidebarButton';
 
 export default function Sidebar() {
   const { logout } = useAuthContext();
@@ -26,7 +26,7 @@ export default function Sidebar() {
         <ul className="flex flex-col gap-2">
           {mainMenu.map((link) => (
             <li key={link.title}>
-              <NavButton collapsed={isSidebarCollapsed} {...link} />
+              <NavButton {...link} collapsed={isSidebarCollapsed} />
             </li>
           ))}
         </ul>
@@ -35,7 +35,11 @@ export default function Sidebar() {
       <div className="flex-1"></div>
 
       <div className="p-4 flex flex-col">
-        <SidebarButton collapsed={isSidebarCollapsed} onClick={logout} {...logoutLink} />
+        <SidebarButton
+          {...logoutLink}
+          collapsed={isSidebarCollapsed}
+          onClick={logout}
+        />
       </div>
     </aside>
   );

@@ -3,21 +3,21 @@ import type { SidebarButtonProps } from './types';
 import { cn } from '@/lib/utils';
 
 export const SidebarButton = ({
-  isActive,
-  icon,
+  Icon,
   title,
+  isActive = false,
   collapsed = false,
   ...props
 }: SidebarButtonProps) => (
   <Button
     {...props}
-    size={collapsed ? 'icon-lg' : 'default'}
+    size={collapsed ? 'icon-lg' : 'lg'}
     variant={isActive ? 'default' : 'ghost'}
-    className={cn('cursor-pointer', {
-      'justify-start w-full': !collapsed,
+    className={cn('cursor-pointer w-full', {
+      'justify-start': !collapsed,
     })}
   >
-    {icon}
-    {collapsed ? '' : title}
+    <Icon />
+    {!collapsed &&  title}
   </Button>
 );

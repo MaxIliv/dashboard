@@ -1,8 +1,8 @@
-import type { ReactNode } from 'react';
+import type { ComponentType } from 'react';
 import type { NavLinkProps } from 'react-router';
 
 export type SidebarButtonProps = {
-  icon: ReactNode;
+  Icon: ComponentType;
   title: string;
   isActive?: boolean;
   collapsed?: boolean;
