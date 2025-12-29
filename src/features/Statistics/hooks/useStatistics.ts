@@ -1,8 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { statisticsService } from '../service/StatisticsService';
 
 export function useStatistics() {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: ['users', 'stats'],
     queryFn: statisticsService.users
   })

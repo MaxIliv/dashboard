@@ -6,6 +6,8 @@ type Statistics = {
   averageHeight: number;
   averageWeight: number;
   averageEmailLength: number;
+  mostFrequentEyeColor: string;
+  mostFrequentEyeColorCount: number;
   users: number;
 };
 
