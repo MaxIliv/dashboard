@@ -1,6 +1,7 @@
 import { RequireAuth } from '@/features/auth/guards/RequireAuth';
 import LoginLayout from '@/layouts/LoginLayout';
 import MainLayout from '@/layouts/MainLayout';
+import ChartsPage from '@/pages/charts/ChartsPage';
 import Home from '@/pages/Home';
 import LoginPage from '@/pages/login/LoginPage';
 import NotFoundPage from '@/pages/not-found/NotFoundPage';
@@ -29,6 +30,11 @@ export const router = createBrowserRouter([
         path: 'statistics',
         handle: { title: 'Statistics' } satisfies RouteHandle,
         Component: StatisticsPage,
+      },
+      {
+        path: 'charts',
+        handle: { title: 'Charts' } satisfies RouteHandle,
+        Component: ChartsPage,
       },
     ],
   },
