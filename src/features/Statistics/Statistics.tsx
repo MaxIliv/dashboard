@@ -40,7 +40,7 @@ export default function Statistics() {
             <Badge variant="success">+1.5%</Badge>
           </div>
         </StatisticsCard>
-        <StatisticsCard Icon={RulerIcon} title="Average Height">
+        <StatisticsCard Icon={RulerIcon} title="Average Weight">
           <div className="flex gap-2 items-end">
             <span className="text-5xl">
               <CountingNumber number={data?.averageWeight ?? 0} />
