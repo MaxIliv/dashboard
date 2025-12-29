@@ -1,3 +1,5 @@
+import { BarChartComponent } from '@/features/Charts/BarChart/BarChart';
+import { LineChartComponent } from '@/features/Charts/LineChart/LineChart';
 import StatisticsPreview from '@/features/Statistics/StatisticsPreview';
 import { LoaderIcon } from 'lucide-react';
 import { Suspense } from 'react';
@@ -11,6 +13,9 @@ export default function Home() {
         <Suspense fallback={<LoaderIcon />}>
           <StatisticsPreview />
         </Suspense>
+
+        <LineChartComponent />
+        <BarChartComponent />
       </section>
     </>
   );
