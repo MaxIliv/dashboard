@@ -1,9 +1,7 @@
-import { Bar, BarChart, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, XAxis } from 'recharts';
 
 import {
   ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart';
@@ -17,9 +15,7 @@ export function BarChartComponent() {
     <ChartContainer config={chartConfig}>
       <BarChart accessibilityLayer data={chartData}>
         <XAxis dataKey="year" />
-        <YAxis dataKey="users" />
         <ChartTooltip content={<ChartTooltipContent />} />
-        <ChartLegend content={<ChartLegendContent />} />
         <Bar type="monotone" dataKey="users" fill="#2563eb" radius={4} />
       </BarChart>
     </ChartContainer>
