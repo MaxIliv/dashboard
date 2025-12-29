@@ -3,7 +3,7 @@ import { tokenStorage } from '@/shared/storage/tokenStorage';
 import { authService } from '@/features/auth/service/AuthService';
 
 export const httpClient = axios.create({
-  baseURL: 'https://dummyjson.com/',
+  baseURL: import.meta.env.VITE_USERS_API_ENDPOINT,
 });
 
 export type HTTPClient = typeof httpClient;

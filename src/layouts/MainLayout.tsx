@@ -6,9 +6,9 @@ export default function MainLayout() {
   return (
     <div className="flex h-screen gap-2">
       <Sidebar />
-      <div className="flex flex-1 flex-col gap-4 p-2">
+      <div className="flex flex-1 flex-col gap-4 p-4">
         <AppBar />
-        <main className="flex-1">
+        <main className="flex-1 flex flex-col gap-4">
           <Outlet />
         </main>
       </div>
