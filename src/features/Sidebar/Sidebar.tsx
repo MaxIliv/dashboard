@@ -5,6 +5,7 @@ import Brand from '../../components/Brand';
 import { NavButton } from './NavButton';
 import { logoutLink, mainMenu } from './constants';
 import { SidebarButton } from './SidebarButton';
+import { Link } from 'react-router';
 
 export default function Sidebar() {
   const { logout } = useAuthContext();
@@ -12,15 +13,14 @@ export default function Sidebar() {
 
   return (
     <aside
-      className={cn(
-        'p-2 w-full flex flex-col gap-4 relative bg-secondary',
-        {
-          'max-w-64': !isSidebarCollapsed,
-          'flex-0': isSidebarCollapsed,
-        }
-      )}
+      className={cn('p-2 w-full flex flex-col gap-4 relative bg-secondary', {
+        'max-w-64': !isSidebarCollapsed,
+        'flex-0': isSidebarCollapsed,
+      })}
     >
-      <Brand />
+      <Link to="/">
+        <Brand />
+      </Link>
 
       <nav className="px-2">
         <ul className="flex flex-col gap-2">

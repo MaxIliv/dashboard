@@ -1,11 +1,17 @@
-import { useAuthContext } from '@/app/providers/AuthProvider';
+import StatisticsPreview from '@/features/Statistics/StatisticsPreview';
+import { LoaderIcon } from 'lucide-react';
+import { Suspense } from 'react';
 
 export default function Home() {
-  const { me } = useAuthContext();
-
   return (
-    <section className="p-4 rounded-md border border-zinc-200 shadow-md">
-      <h1 className="text-3xl font-bold underline">Hello {me?.firstName}!</h1>
-    </section>
+    <>
+      <section className="grid gap-2">
+        <h2 className="text-2xl">Users Statistics</h2>
+
+        <Suspense fallback={<LoaderIcon />}>
+          <StatisticsPreview />
+        </Suspense>
+      </section>
+    </>
   );
 }
