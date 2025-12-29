@@ -11,7 +11,7 @@ export default function AppBar() {
   const ToggleIcon = isSidebarCollapsed ? PanelLeftOpen : PanelLeftClose;
 
   return (
-    <header className="flex h-16 py-4 px-0 items-center gap-2">
+    <header className="flex h-16 py-4 px-0 items-center gap-2 border-b">
       <Button onClick={toggleSidebar} size="icon" variant="ghost">
         <ToggleIcon />
       </Button>

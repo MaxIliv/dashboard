@@ -8,7 +8,7 @@ export default function MainLayout() {
       <Sidebar />
       <div className="flex flex-1 flex-col gap-4 p-4">
         <AppBar />
-        <main className="flex-1 flex flex-col gap-4">
+        <main className="flex-1 flex flex-col gap-4 overflow-auto">
           <Outlet />
         </main>
       </div>

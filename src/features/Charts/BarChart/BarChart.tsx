@@ -14,7 +14,7 @@ export function BarChartComponent() {
   const { data: chartData } = useChartData();
 
   return (
-    <ChartContainer config={chartConfig} className="min-h-50 w-full">
+    <ChartContainer config={chartConfig}>
       <BarChart accessibilityLayer data={chartData}>
         <XAxis dataKey="year" />
         <YAxis dataKey="users" />
