@@ -1,4 +1,4 @@
-import { CakeIcon, UserCircleIcon } from 'lucide-react';
+import { CakeIcon, RulerIcon, UserCircleIcon } from 'lucide-react';
 import StatisticsCard from './components/StatisticsCard';
 import { Badge } from '@/components/ui/badge';
 import { useStatistics } from './hooks/useStatistics';
@@ -29,6 +29,24 @@ export default function Statistics() {
             </span>
             <span>users</span>
             <Badge variant="success">+11.5%</Badge>
+          </div>
+        </StatisticsCard>
+        <StatisticsCard Icon={RulerIcon} title="Average Height">
+          <div className="flex gap-2 items-end">
+            <span className="text-5xl">
+              <CountingNumber number={data?.averageHeight ?? 0} />
+            </span>
+            <span>cm</span>
+            <Badge variant="success">+1.5%</Badge>
+          </div>
+        </StatisticsCard>
+        <StatisticsCard Icon={RulerIcon} title="Average Height">
+          <div className="flex gap-2 items-end">
+            <span className="text-5xl">
+              <CountingNumber number={data?.averageWeight ?? 0} />
+            </span>
+            <span>kg</span>
+            <Badge variant="outline">-1.5%</Badge>
           </div>
         </StatisticsCard>
       </div>

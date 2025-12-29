@@ -12,10 +12,10 @@ export default function StatisticsCard({
   children,
 }: StatisticsCardProps) {
   return (
-    <Card className="min-w-64 w-1/4 py-4">
+    <Card className="min-w-64 py-4">
       <CardHeader className="px-4 flex gap-2 text-foreground/80">
-        <p className="leading-6">{title}</p>
         <Icon />
+        <p className="leading-6">{title}</p>
       </CardHeader>
       <CardContent className="px-4">{children}</CardContent>
     </Card>

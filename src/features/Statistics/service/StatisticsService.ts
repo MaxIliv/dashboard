@@ -4,6 +4,7 @@ type Statistics = {
   medianAge: number;
   eyeColor: string;
   averageHeight: number;
+  averageWeight: number;
   averageEmailLength: number;
   users: number;
 };
