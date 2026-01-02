@@ -1,23 +1,26 @@
-import { MoonStarIcon, SunDimIcon } from 'lucide-react'
-import { useTheme } from '@/app/providers/ThemeProvider'
-import { Button } from "@/components/ui/button"
-
+import { MoonStarIcon, SunIcon } from 'lucide-react';
+import { useTheme } from '@/app/providers/ThemeProvider';
+import { Button } from '@/components/ui/button';
+import SimplelTooltip from './SimplelTooltip';
 
 export function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme()
+  const { toggleTheme, isLightTheme } = useTheme();
+
+  const Icon = isLightTheme ? SunIcon : MoonStarIcon;
+  const title = isLightTheme ? 'Light mode' : 'Dark mode';
+  const arialLabel = `Click to ${isLightTheme ? 'Dark' : 'Light'} mode`;
 
   return (
-    <Button
-      onClick={toggleTheme}
-      variant='ghost'
-      size="icon"
-      className="rounded-full cursor-pointer"
-    >
-      {
-        theme === 'light' ?
-          <SunDimIcon />
-          : <MoonStarIcon />
-      }
-    </Button>
-  )
+    <SimplelTooltip title={title}>
+      <Button
+        onClick={toggleTheme}
+        variant="ghost"
+        size="icon"
+        className="cursor-pointer"
+        aria-label={arialLabel}
+      >
+        <Icon />
+      </Button>
+    </SimplelTooltip>
+  );
 }

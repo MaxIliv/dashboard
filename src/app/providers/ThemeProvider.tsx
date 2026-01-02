@@ -17,6 +17,7 @@ type ThemeProviderProps = {
 
 type ThemeProviderState = {
   theme: Theme;
+  isLightTheme: boolean;
   toggleTheme: () => void;
 };
 
@@ -46,8 +47,11 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     root.classList.add(theme);
   }, [theme]);
 
+  const isLightTheme = theme === THEMES.light;
+
   const value = {
     theme,
+    isLightTheme,
     toggleTheme: () => {
       const nextTheme = theme === THEMES.dark ? THEMES.light : THEMES.dark;
 
