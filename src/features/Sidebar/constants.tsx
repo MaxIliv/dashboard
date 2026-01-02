@@ -4,6 +4,7 @@ import {
   ChartLineIcon,
   GaugeIcon,
   LogOutIcon,
+  UsersIcon,
 } from 'lucide-react';
 
 export const mainMenu: SidebarLink[] = [
@@ -21,6 +22,11 @@ export const mainMenu: SidebarLink[] = [
     to: '/charts',
     title: 'Charts',
     Icon: ChartLineIcon,
+  },
+  {
+    to: '/users',
+    title: 'Users',
+    Icon: UsersIcon,
   },
 ];
 

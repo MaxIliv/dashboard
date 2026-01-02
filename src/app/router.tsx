@@ -6,11 +6,12 @@ import Home from '@/pages/Home';
 import LoginPage from '@/pages/login/LoginPage';
 import NotFoundPage from '@/pages/not-found/NotFoundPage';
 import StatisticsPage from '@/pages/statistics/StatisticsPage';
+import UsersPage from '@/pages/users/UsersPage';
 import { createBrowserRouter } from 'react-router';
 
 export type RouteHandle = {
   title?: string;
-}
+};
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,11 @@ export const router = createBrowserRouter([
         path: 'charts',
         handle: { title: 'Charts' } satisfies RouteHandle,
         Component: ChartsPage,
+      },
+      {
+        path: 'users',
+        handle: { title: 'Users' } satisfies RouteHandle,
+        Component: UsersPage,
       },
     ],
   },

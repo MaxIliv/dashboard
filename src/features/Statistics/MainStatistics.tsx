@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { useStatistics } from './hooks/useStatistics';
 import { CountingNumber } from '@/components/animate-ui/primitives/texts/counting-number';
 
-export default function StatisticsPreview() {
+export default function MainStatistics() {
   const { data } = useStatistics();
 
   return (
