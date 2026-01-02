@@ -59,3 +59,15 @@ export function useAppSidebar(): SidebarValue {
 
   return { isSidebarCollapsed, toggleSidebar };
 }
+
+export function useSnowfall(): SnowfallValue {
+  const ctx = useContext(AppContext);
+
+  if (ctx === null) {
+    throw new Error('useSnowfall needs to be call within AppProvider');
+  }
+
+  const { isSnowfallEnabled, toggleSnowfall } = ctx;
+
+  return { isSnowfallEnabled, toggleSnowfall };
+}
