@@ -2,7 +2,7 @@ import ChartCard from '@/features/Charts/ChartCard';
 import { LineChartComponent } from '@/features/Charts/LineChart/LineChart';
 import CardLoader from '@/features/Statistics/components/CardLoader';
 import MainStatistics from '@/features/Statistics/MainStatistics';
-import RecentUsers from '@/features/Users/RecentUsers';
+import RecentUsers from '@/features/Users/components/RecentUsers';
 import { Suspense } from 'react';
 
 export default function Home() {

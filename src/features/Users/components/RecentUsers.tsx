@@ -1,8 +1,8 @@
 import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
-import { columns } from './columns';
-import { useUsers } from './hooks/useUsers';
-import TableView from './components/TableView';
-import { DEFAULT_LIMIT } from './constants';
+import { columns } from '../columns';
+import { useUsers } from '../hooks/useUsers';
+import TableView from './TableView';
+import { DEFAULT_LIMIT } from '../constants';
 
 export default function RecentUsers() {
   const {

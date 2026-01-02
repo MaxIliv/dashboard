@@ -11,12 +11,12 @@ import {
 import { useMemo, useState } from 'react';
 
 import { Input } from '@/components/ui/input';
-import { useUsers } from './hooks/useUsers';
-import { TablePagination } from './components/TablePagination';
-import { getPageNumbers } from './utils/getPageNumbers';
-import { columns } from './columns';
-import TableView from './components/TableView';
-import { DEFAULT_LIMIT } from './constants';
+import { useUsers } from '../hooks/useUsers';
+import { TablePagination } from './TablePagination';
+import { getPageNumbers } from '../utils/getPageNumbers';
+import { columns } from '../columns';
+import TableView from './TableView';
+import { DEFAULT_LIMIT } from '../constants';
 
 export function UsersTable() {
   const defaultData = useMemo(() => [], []);
