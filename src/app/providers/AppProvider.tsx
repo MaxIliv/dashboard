@@ -4,11 +4,11 @@ import type { ProviderProps } from './types';
 type SidebarValue = {
   toggleSidebar: () => void;
   isSidebarCollapsed: boolean;
-}
+};
 type SnowfallValue = {
   toggleSnowfall: () => void;
   isSnowfallEnabled: boolean;
-}
+};
 
 type AppContextType = SnowfallValue & SidebarValue;
 
@@ -19,7 +19,10 @@ export function AppProvider({ children }: ProviderProps) {
     (prev) => !prev,
     false
   );
-  const [isSnowfallEnabled, toggleSnowfall] = useReducer((prev) => !prev, true);
+  const [isSnowfallEnabled, toggleSnowfall] = useReducer(
+    (prev) => !prev,
+    false
+  );
 
   return (
     <AppContext.Provider
