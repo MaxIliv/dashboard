@@ -6,6 +6,8 @@ import { NavButton } from './NavButton';
 import { logoutLink, mainMenu } from './constants';
 import { SidebarButton } from './SidebarButton';
 import { Link } from 'react-router';
+import SnowfallView from '../snowfall/SnowfallView';
+import SnowfallToggle from '@/components/SnowfallToggle';
 
 export default function Sidebar() {
   const { logout } = useAuthContext();
@@ -13,11 +15,13 @@ export default function Sidebar() {
 
   return (
     <aside
-      className={cn('p-2 w-full flex flex-col gap-4 relative bg-secondary', {
+      className={cn('p-2 w-full flex flex-col gap-4 relative bg-sidebar', {
         'max-w-64': !isSidebarCollapsed,
         'flex-0': isSidebarCollapsed,
       })}
     >
+      <SnowfallView />
+
       <Link to="/">
         <Brand />
       </Link>
@@ -34,7 +38,9 @@ export default function Sidebar() {
 
       <div className="flex-1"></div>
 
-      <div className="p-2 flex flex-col">
+      <div className="px-2">
+        <SnowfallToggle />
+
         <SidebarButton
           {...logoutLink}
           collapsed={isSidebarCollapsed}
