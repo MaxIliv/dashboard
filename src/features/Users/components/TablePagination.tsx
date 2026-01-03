@@ -7,7 +7,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
-import { useTable } from '../context/table.context';
+import { useTable } from '../context/users-table.context';
 import { getPageNumbers } from '../utils/getPageNumbers';
 
 export function TablePagination() {

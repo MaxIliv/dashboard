@@ -1,4 +1,4 @@
-import { useTable } from '../context/table.context';
+import { useTable } from '../context/users-table.context';
 
 const DISPLAY_OPTIONS = [10, 20, 30, 40, 50];
 

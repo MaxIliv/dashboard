@@ -1,4 +1,4 @@
-import { TableProvider } from './table.context';
+import { TableProvider } from './users-table.context';
 import useUsersTable from '../hooks/useUsersTable';
 import type { ReactNode } from 'react';
 

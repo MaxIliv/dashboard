@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/table';
 import { flexRender } from '@tanstack/react-table';
 import { columns } from '../columns';
-import { useTable } from '../context/table.context';
+import { useTable } from '../context/users-table.context';
 
 const NoResults = () => (
   <TableRow>

@@ -1,4 +1,4 @@
-import { useTable } from '../context/table.context';
+import { useTable } from '../context/users-table.context';
 import { Input } from '@/components/ui/input';
 
 export default function TableSearch() {
