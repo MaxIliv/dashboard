@@ -6,15 +6,22 @@ import {
   TableBody,
   TableCell,
 } from '@/components/ui/table';
-import { flexRender, type Table as TableType } from '@tanstack/react-table';
+import { flexRender } from '@tanstack/react-table';
 import { columns } from '../columns';
-import type { User } from '../types';
+import { useTable } from '../context/table.context';
 
-type TableViewProps = {
-  table: TableType<User>;
-};
+const NoResults = () => (
+  <TableRow>
+    <TableCell colSpan={columns.length} className="h-24 text-center">
+      No results.
+    </TableCell>
+  </TableRow>
+);
 
-export default function TableView({ table }: TableViewProps) {
+export default function TableView() {
+  const table = useTable();
+  const rows = table.getRowModel().rows;
+
   return (
     <div className="overflow-hidden rounded-md border">
       <Table>
@@ -37,8 +44,8 @@ export default function TableView({ table }: TableViewProps) {
           ))}
         </TableHeader>
         <TableBody>
-          {table.getRowModel().rows.length ? (
-            table.getRowModel().rows.map((row) => (
+          {rows.length ? (
+            rows.map((row) => (
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && 'selected'}
@@ -51,11 +58,7 @@ export default function TableView({ table }: TableViewProps) {
               </TableRow>
             ))
           ) : (
-            <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
-              </TableCell>
-            </TableRow>
+            <NoResults />
           )}
         </TableBody>
       </Table>

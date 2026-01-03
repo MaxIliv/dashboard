@@ -7,20 +7,20 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
-import type { Table } from '@tanstack/react-table';
-import type { User } from '../types';
+import { useTable } from '../context/table.context';
+import { getPageNumbers } from '../utils/getPageNumbers';
 
-type TablePaginationProps = {
-  pages: number[];
-  currentPage: number;
-  table: Table<User>;
-};
+export function TablePagination() {
+  const table = useTable();
 
-export function TablePagination({
-  currentPage,
-  pages,
-  table,
-}: TablePaginationProps) {
+  const { pagination } = table.getState();
+  const currentPage = pagination.pageIndex;
+
+  const pages = getPageNumbers({
+    totalPages: table.getPageCount(),
+    currentPage: table.getState().pagination.pageIndex,
+  });
+
   const canPrevPage = table.getCanPreviousPage();
   const canNextPage = table.getCanNextPage();
 

@@ -1,60 +1,37 @@
-import type { ColumnDef } from '@tanstack/react-table';
+import { createColumnHelper } from '@tanstack/react-table';
 import type { User } from './types';
-import { Button } from '@/components/ui/button';
-import { ArrowUpDown } from 'lucide-react';
 
-export const columns: ColumnDef<User>[] = [
-  {
-    accessorKey: 'id',
+const columnHelper = createColumnHelper<User>();
+
+export const columns = [
+  columnHelper.accessor('id', {
     header: 'Id',
-    cell: ({ row }) => <div>{row.getValue('id')}</div>,
-  },
-  {
-    accessorKey: 'firstName',
+  }),
+  columnHelper.accessor('firstName', {
     header: 'Name',
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue('firstName')}</div>
-    ),
-  },
-  {
-    accessorKey: 'email',
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => {
-            column.toggleSorting(column.getIsSorted() === 'asc');
-          }}
-        >
-          Email
-          <ArrowUpDown />
-        </Button>
-      );
+    cell({ getValue }) {
+      return <div className="capitalize">{getValue()}</div>;
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue('email')}</div>,
-  },
-  {
-    accessorKey: 'role',
-    header: 'Role',
-    cell: ({ row }) => <div>{row.getValue('role')}</div>,
-  },
-  {
-    accessorKey: 'birthDate',
+  }),
+  columnHelper.accessor('email', {
+    header: 'Email',
+    cell: ({ getValue }) => <div className="lowercase">{getValue()}</div>,
+  }),
+  columnHelper.accessor('birthDate', {
     header: 'Birth Date',
-    cell: ({ row }) => {
-      const birthDate = new Date(row.getValue('birthDate'));
+    cell({ getValue }) {
+      const birthDate = new Date(getValue());
 
       return <div>{birthDate.toLocaleDateString()}</div>;
     },
-  },
-  {
-    accessorKey: 'height',
+  }),
+  columnHelper.accessor('role', {
+    header: 'Role',
+  }),
+  columnHelper.accessor('height', {
     header: 'Height',
-    cell: ({ row }) => <div>{row.getValue('height')}</div>,
-  },
-  {
-    accessorKey: 'weight',
+  }),
+  columnHelper.accessor('weight', {
     header: 'Weight',
-    cell: ({ row }) => <div>{row.getValue('weight')}</div>,
-  },
+  }),
 ];
