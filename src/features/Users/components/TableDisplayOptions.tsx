@@ -1,10 +1,10 @@
 import { useTable } from '../context/table.context';
 
+const DISPLAY_OPTIONS = [10, 20, 30, 40, 50];
+
 export default function TableDisplayOptions() {
   const table = useTable();
   const { pagination } = table.getState();
-
-  const DISPLAY_OPTIONS = [10, 20, 30, 40, 50];
 
   const rowsCount = table.getRowCount();
   const from = pagination.pageIndex * pagination.pageSize;
