@@ -1,5 +1,6 @@
 import { createColumnHelper } from '@tanstack/react-table';
 import type { User } from './types';
+import { formatDate } from './utils/formatDate';
 
 const columnHelper = createColumnHelper<User>();
 
@@ -20,9 +21,9 @@ export const columns = [
   columnHelper.accessor('birthDate', {
     header: 'Birth Date',
     cell({ getValue }) {
-      const birthDate = new Date(getValue());
+      const birthDate = formatDate(getValue());
 
-      return <div>{birthDate.toLocaleDateString()}</div>;
+      return <div>{birthDate}</div>;
     },
   }),
   columnHelper.accessor('role', {
