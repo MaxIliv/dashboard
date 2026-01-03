@@ -3,11 +3,14 @@ import { columns } from '../columns';
 import { useUsers } from '../hooks/useUsers';
 import TableView from './TableView';
 import { DEFAULT_LIMIT } from '../constants';
+import { TableProvider } from '../context/users-table.context';
+
+const DEFAULT_PROPS = { page: 0, limit: DEFAULT_LIMIT };
 
 export default function RecentUsers() {
   const {
     data: { users },
-  } = useUsers({ page: 0, limit: DEFAULT_LIMIT });
+  } = useUsers(DEFAULT_PROPS);
 
   const table = useReactTable({
     data: users,
@@ -15,5 +18,9 @@ export default function RecentUsers() {
     getCoreRowModel: getCoreRowModel(),
   });
 
-  return <TableView table={table} />;
+  return (
+    <TableProvider table={table}>
+      <TableView />
+    </TableProvider>
+  );
 }
