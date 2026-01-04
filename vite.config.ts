@@ -15,9 +15,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           react: ['react', 'react-dom'],
-          recharts: ['recharts'],
           router: ['react-router'],
-          table: ['@tanstack/react-table'],
           icons: ['lucide-react'],
         },
       },
