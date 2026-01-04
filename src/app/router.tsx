@@ -21,7 +21,6 @@ export const router = createBrowserRouter([
           const { default: Home } = await import('@/pages/Home');
           return { Component: Home };
         },
-        handle: { title: 'Dashboard' } satisfies RouteHandle,
       },
       {
         path: 'statistics',

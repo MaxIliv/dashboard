@@ -5,12 +5,16 @@ import MainStatistics from '@/features/Statistics/MainStatistics';
 import { lazy, Suspense } from 'react';
 import { Link } from 'react-router';
 
-const DynamicChart = lazy(() => import('@/features/Charts/components/DynamicChart'));
-const RecentUsers = lazy(() => import('@/features/Users/components/RecentUsers'));
+const DynamicChart = lazy(
+  () => import('@/features/Charts/components/DynamicChart')
+);
+const RecentUsers = lazy(
+  () => import('@/features/Users/components/RecentUsers')
+);
 
 export default function Home() {
   return (
-    <section className="grid gap-8">
+    <section className="grid gap-12">
       <section>
         <h2 className="text-xl mb-4">Users Statistics</h2>
 
@@ -28,6 +32,7 @@ export default function Home() {
       <section>
         <div className="flex justify-between">
           <h2 className="text-xl mb-4">Recent Users</h2>
+
           <Button asChild variant="link">
             <Link to="/users">View all</Link>
           </Button>

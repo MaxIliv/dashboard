@@ -7,7 +7,7 @@ import { UsersTableProvider } from '@/features/Users/context/users-table.provide
 export default function UsersPage() {
   return (
     <section className="w-full grid gap-4">
-      <h2>Users</h2>
+      <h2 className="text-xl">Users</h2>
 
       <UsersTableProvider>
         <div className="flex items-center justify-between flex-wrap gap-2">

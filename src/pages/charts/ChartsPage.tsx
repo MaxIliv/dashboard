@@ -11,13 +11,13 @@ const BarChartComponent = lazy(
 export default function ChartsPage() {
   return (
     <section className="grid gap-4">
-      <h2 className="text-2xl">Charts</h2>
+      <h2 className="text-xl">Charts</h2>
 
-      <div className="flex gap-2 flex-wrap">
-        <ChartCard className="w-lg">
+      <div className="flex gap-4 flex-wrap">
+        <ChartCard className="flex-1 min-w-lg">
           <LineChartComponent />
         </ChartCard>
-        <ChartCard className="w-lg">
+        <ChartCard className="flex-1 min-w-lg">
           <BarChartComponent />
         </ChartCard>
       </div>

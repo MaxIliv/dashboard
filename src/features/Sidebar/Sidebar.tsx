@@ -15,7 +15,7 @@ export default function Sidebar() {
   return (
     <SidebarProvider>
       <aside
-        className={cn('p-2 w-full flex flex-col gap-4 relative bg-sidebar', {
+        className={cn('p-2 w-full flex flex-col gap-8 relative bg-sidebar', {
           'max-w-64': !isSidebarCollapsed,
           'flex-0': isSidebarCollapsed,
         })}
