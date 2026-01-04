@@ -15,13 +15,14 @@ import { Controller, useForm } from 'react-hook-form';
 import { schema, type LoginFormSchema } from './schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { isAxiosError } from 'axios';
+import { LoaderIcon } from 'lucide-react';
 
 export default function LoginPage() {
   const {
     control,
     handleSubmit,
     setError,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<LoginFormSchema>({
     defaultValues: {
       username: '',
@@ -114,7 +115,8 @@ export default function LoginPage() {
               />
             </div>
 
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
+              {isSubmitting && <LoaderIcon  />}
               Login
             </Button>
 
