@@ -6,9 +6,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { DropdownMenuLabel } from '@radix-ui/react-dropdown-menu';
 import { LogOutIcon } from 'lucide-react';
 
 export default function NavUser() {
@@ -18,7 +19,11 @@ export default function NavUser() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="cursor-pointer justify-start px-4" size="lg">
+        <Button
+          variant="ghost"
+          className="cursor-pointer justify-start px-4"
+          size="lg"
+        >
           <Avatar className="w-4 h-4">
             <AvatarImage src={me?.image} alt={me?.username} />
           </Avatar>
@@ -27,7 +32,7 @@ export default function NavUser() {
       </DropdownMenuTrigger>
       <DropdownMenuContent side="top" className="w-56" align="start">
         <DropdownMenuLabel>
-          <div className="grid flex-1 text-left text-sm p-2 leading-tight">
+          <div className="grid flex-1 text-left text-sm leading-tight">
             <span className="truncate font-medium">
               {me?.firstName} {me?.lastName}
             </span>
@@ -36,6 +41,13 @@ export default function NavUser() {
             </span>
           </div>
         </DropdownMenuLabel>
+
+        <DropdownMenuLabel>
+          <span className="text-muted-foreground truncate text-xs">
+            {me?.role}
+          </span>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
         <DropdownMenuItem onClick={logout}>
           <LogOutIcon />
           Logout
