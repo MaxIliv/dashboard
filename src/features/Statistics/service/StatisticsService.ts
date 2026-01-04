@@ -2,7 +2,6 @@ import { statsClient, type StatsClient } from '@/shared/api/statsClient';
 
 type Statistics = {
   medianAge: number;
-  eyeColor: string;
   averageHeight: number;
   averageWeight: number;
   averageEmailLength: number;
