@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
-import ChartCard from '@/features/Charts/ChartCard';
-import { LineChartComponent } from '@/features/Charts/LineChart/LineChart';
+import DynamicChart from '@/features/Charts/components/DynamicChart';
 import CardLoader from '@/features/Statistics/components/CardLoader';
 import MainStatistics from '@/features/Statistics/MainStatistics';
 import RecentUsers from '@/features/Users/components/RecentUsers';
@@ -19,11 +18,7 @@ export default function Home() {
       </section>
 
       <section>
-        <h2 className="text-xl mb-4">Users Chart</h2>
-
-        <ChartCard className="w-1/2">
-          <LineChartComponent />
-        </ChartCard>
+        <DynamicChart />
       </section>
 
       <section>
