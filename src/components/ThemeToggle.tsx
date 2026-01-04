@@ -7,8 +7,8 @@ export function ThemeToggle() {
   const { toggleTheme, isLightTheme } = useTheme();
 
   const Icon = isLightTheme ? SunIcon : MoonStarIcon;
-  const title = isLightTheme ? 'Light mode' : 'Dark mode';
-  const arialLabel = `Click to ${isLightTheme ? 'Dark' : 'Light'} mode`;
+  const title = `Switch to ${isLightTheme ? 'Dark' : 'Light'} mode`;
+  const arialLabel = title;
 
   return (
     <SimplelTooltip title={title}>
