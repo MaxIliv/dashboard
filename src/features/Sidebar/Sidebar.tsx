@@ -1,17 +1,15 @@
 import { useAppContext } from '@/app/providers/AppProvider';
-import { useAuthContext } from '@/app/providers/AuthProvider';
 import { cn } from '@/lib/utils';
 import Brand from '../../components/Brand';
 import { NavButton } from './NavButton';
-import { logoutLink, mainMenu } from './constants';
-import { SidebarButton } from './SidebarButton';
+import { mainMenu } from './constants';
 import { Link } from 'react-router';
 import SnowfallView from '../snowfall/SnowfallView';
 import SnowfallToggle from '@/components/SnowfallToggle';
 import { SidebarProvider } from './SidebarProvider';
+import NavUser from './components/NavUser';
 
 export default function Sidebar() {
-  const { logout } = useAuthContext();
   const { isSidebarCollapsed } = useAppContext();
 
   return (
@@ -41,13 +39,10 @@ export default function Sidebar() {
         <div className="flex-1"></div>
 
         <div className="px-2">
-          <SnowfallToggle />
-
-          <SidebarButton
-            {...logoutLink}
-            collapsed={isSidebarCollapsed}
-            onClick={logout}
-          />
+          <div className="flex flex-col gap-2 justify-start">
+            <SnowfallToggle />
+            <NavUser />
+          </div>
         </div>
       </aside>
     </SidebarProvider>
