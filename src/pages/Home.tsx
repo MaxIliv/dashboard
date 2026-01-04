@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import DynamicChart from '@/features/Charts/components/DynamicChart';
 import CardLoader from '@/features/Statistics/components/CardLoader';
 import MainStatistics from '@/features/Statistics/MainStatistics';
@@ -18,7 +19,9 @@ export default function Home() {
       </section>
 
       <section>
-        <DynamicChart />
+        <Suspense fallback={<Skeleton className="h-64" />}>
+          <DynamicChart />
+        </Suspense>
       </section>
 
       <section>
@@ -28,7 +31,10 @@ export default function Home() {
             <Link to="/users">View all</Link>
           </Button>
         </div>
-        <RecentUsers />
+
+        <Suspense fallback={<CardLoader />}>
+          <RecentUsers />
+        </Suspense>
       </section>
     </section>
   );

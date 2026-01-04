@@ -6,10 +6,11 @@ import {
   CardContent,
   CardFooter,
 } from '@/components/ui/card';
-import { LoaderIcon, TrendingUp } from 'lucide-react';
+import { TrendingUp } from 'lucide-react';
 import type { ResponsiveContainer } from 'recharts';
 import { Suspense } from 'react';
 import { cn } from '@/lib/utils';
+import { Skeleton } from '@/components/ui/skeleton';
 
 type ChartCardProps = {
   className?: string;
@@ -24,7 +25,7 @@ export default function ChartCard({ children, className }: ChartCardProps) {
         <CardDescription>1989-2002</CardDescription>
       </CardHeader>
       <CardContent>
-        <Suspense fallback={<LoaderIcon />}>{children}</Suspense>
+        <Suspense fallback={<Skeleton className="h-64 w-full" />}>{children}</Suspense>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 leading-none font-medium">
