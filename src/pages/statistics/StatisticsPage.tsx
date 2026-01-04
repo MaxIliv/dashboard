@@ -1,5 +1,5 @@
 import CardLoader from '@/features/Statistics/components/CardLoader';
-import StatisticsFull from '@/features/Statistics/StatisticsFull';
+import Statistics from '@/features/Statistics/Statistics';
 import { Suspense } from 'react';
 
 export default function StatisticsPage() {
@@ -7,7 +7,7 @@ export default function StatisticsPage() {
     <section className="grid gap-4">
       <h2 className="text-xl">Statistics</h2>
       <Suspense fallback={<CardLoader />}>
-        <StatisticsFull />
+        <Statistics />
       </Suspense>
     </section>
   );
