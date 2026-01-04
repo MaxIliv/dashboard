@@ -5,13 +5,13 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart';
-import useChartData from '../hooks/useChartData';
-import { chartConfig } from '../config';
+import useChartData from '../../hooks/useChartData';
+import { chartConfig } from '../../config';
 import type { ChartProps } from '../LineChart/LineChart';
 import { cn } from '@/lib/utils';
-import type { Data } from '../types';
+import type { Data } from '../../types';
 
-export function BarChartComponent({ className }: ChartProps) {
+export default function BarChartComponent({ className }: ChartProps) {
   const { data: chartData } = useChartData();
 
   return (

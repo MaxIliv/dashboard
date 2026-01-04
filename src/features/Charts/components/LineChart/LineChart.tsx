@@ -5,16 +5,16 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart';
-import useChartData from '../hooks/useChartData';
-import { chartConfig } from '../config';
+import useChartData from '../../hooks/useChartData';
+import { chartConfig } from '../../config';
 import { cn } from '@/lib/utils';
-import type { Data } from '../types';
+import type { Data } from '../../types';
 
 export type ChartProps = {
   className?: string;
 };
 
-export function LineChartComponent({ className }: ChartProps) {
+export default function LineChartComponent({ className }: ChartProps) {
   const { data: chartData } = useChartData();
 
   return (

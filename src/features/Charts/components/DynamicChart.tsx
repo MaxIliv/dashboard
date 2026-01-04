@@ -1,9 +1,9 @@
-import { Activity, useState } from 'react';
-import { BarChartComponent } from '../BarChart/BarChart';
-
-import { LineChartComponent } from '../LineChart/LineChart';
+import { Activity, lazy, useState } from 'react';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
+
+const LineChartComponent = lazy(() => import('./LineChart/LineChart'));
+const BarChartComponent = lazy(() => import('./BarChart/BarChart'));
 
 export default function DynamicChart() {
   const [checked, setChecked] = useState(false);

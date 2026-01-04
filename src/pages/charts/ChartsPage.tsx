@@ -1,6 +1,12 @@
-import { BarChartComponent } from '@/features/Charts/BarChart/BarChart';
 import ChartCard from '@/features/Charts/ChartCard';
-import { LineChartComponent } from '@/features/Charts/LineChart/LineChart';
+import { lazy } from 'react';
+
+const LineChartComponent = lazy(
+  () => import('@/features/Charts/components/LineChart/LineChart')
+);
+const BarChartComponent = lazy(
+  () => import('@/features/Charts/components/BarChart/BarChart')
+);
 
 export default function ChartsPage() {
   return (

@@ -1,20 +1,18 @@
-import { Skeleton } from '@/components/ui/skeleton';
-import { RequireAuth } from '@/features/auth/guards/RequireAuth';
-import LoginLayout from '@/layouts/LoginLayout';
-import MainLayout from '@/layouts/MainLayout';
+import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router';
+import { Skeleton } from '@/components/ui/skeleton';
+import LoginLayout from '@/layouts/LoginLayout';
 
 export type RouteHandle = {
   title?: string;
 };
+
+const AuthMainLayout = lazy(() => import('@/layouts/AuthMainLayout'));
+
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <RequireAuth>
-        <MainLayout />
-      </RequireAuth>
-    ),
+    Component: AuthMainLayout,
     HydrateFallback: () => <Skeleton />,
     children: [
       {
