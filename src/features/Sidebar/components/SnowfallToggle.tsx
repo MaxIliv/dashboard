@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { SnowflakeIcon } from 'lucide-react';
-import SimplelTooltip from './SimplelTooltip';
+import SimplelTooltip from '@/components/SimplelTooltip';
 import { cn } from '@/lib/utils';
 import { useSnowfall } from '@/features/Sidebar/SidebarProvider';
 

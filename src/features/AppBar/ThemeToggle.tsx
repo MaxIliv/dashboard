@@ -1,7 +1,7 @@
 import { MoonStarIcon, SunIcon } from 'lucide-react';
 import { useTheme } from '@/app/providers/ThemeProvider';
 import { Button } from '@/components/ui/button';
-import SimplelTooltip from './SimplelTooltip';
+import SimplelTooltip from '@/components/SimplelTooltip';
 
 export function ThemeToggle() {
   const { toggleTheme, isLightTheme } = useTheme();

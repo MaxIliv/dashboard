@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import type { SidebarButtonProps } from './types';
+import type { SidebarButtonProps } from '@/features/Sidebar/types';
 import { cn } from '@/lib/utils';
 import {
   Tooltip,

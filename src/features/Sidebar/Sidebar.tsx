@@ -1,10 +1,10 @@
 import { useAppContext } from '@/app/providers/AppProvider';
 import { cn } from '@/lib/utils';
 import NavBrand from './components/NavBrand';
-import { NavButton } from './NavButton';
+import { NavButton } from './components/NavButton';
 import { mainMenu } from './constants';
-import SnowfallView from '../snowfall/SnowfallView';
-import SnowfallToggle from '@/components/SnowfallToggle';
+import SnowfallView from '../Snowfall/SnowfallView';
+import SnowfallToggle from '@/features/Sidebar/components/SnowfallToggle';
 import { SidebarProvider } from './SidebarProvider';
 import NavUser from './components/NavUser';
 

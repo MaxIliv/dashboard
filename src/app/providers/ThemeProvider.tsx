@@ -3,12 +3,11 @@ import { createContext, useContext, useEffect, useState } from 'react';
 const THEMES = {
   dark: 'dark',
   light: 'light',
-  system: 'system',
 } as const;
 
 const STORAGE_KEY = 'ui-theme';
 
-type Theme = 'dark' | 'light' | 'system';
+type Theme = 'dark' | 'light';
 
 type ThemeProviderProps = {
   children: React.ReactNode;

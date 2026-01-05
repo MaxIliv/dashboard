@@ -1,5 +1,5 @@
 import Sidebar from '@/features/Sidebar/Sidebar';
-import AppBar from '@/components/AppBar';
+import AppBar from '@/features/AppBar/AppBar';
 import { Outlet } from 'react-router';
 
 export default function MainLayout() {

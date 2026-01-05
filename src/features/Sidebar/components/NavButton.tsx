@@ -1,6 +1,6 @@
 import { type JSX } from 'react';
 import { NavLink } from 'react-router';
-import type { SidebarLink } from './types';
+import type { SidebarLink } from '../types';
 import { SidebarButton } from './SidebarButton';
 
 export const NavButton = ({

@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import { tokenStorage } from '@/shared/storage/tokenStorage';
-import { authService } from '@/features/auth/service/AuthService';
+import { authService } from '@/features/Auth/service/AuthService';
 
 export const httpClient = axios.create({
   baseURL: import.meta.env.VITE_USERS_API_ENDPOINT,

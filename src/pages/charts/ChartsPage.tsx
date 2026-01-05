@@ -1,4 +1,4 @@
-import ChartCard from '@/features/Charts/ChartCard';
+import ChartCard from '@/features/Charts/components/ChartCard';
 import { lazy } from 'react';
 
 const LineChartComponent = lazy(

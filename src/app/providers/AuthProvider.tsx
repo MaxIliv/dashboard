@@ -1,9 +1,7 @@
-// Create Context
-
-import { authService } from '@/features/auth/service/AuthService';
-import type { AuthPayload, AuthResponse } from '@/features/auth/types';
-import useUser from '@/features/user/hooks/useUser';
-import type { Me } from '@/features/user/types';
+import { authService } from '@/features/Auth/service/AuthService';
+import type { AuthPayload, AuthResponse } from '@/features/Auth/types';
+import useUser from '@/features/User/hooks/useUser';
+import type { Me } from '@/features/User/types';
 import { createContext, useContext, useState, type ReactNode } from 'react';
 
 type AuthContextValue = {
@@ -44,8 +42,6 @@ export function AuthProvider({ children }: ProviderBaseProps) {
     </AuthContext.Provider>
   );
 }
-
-// useAuth
 
 export const useAuthContext = () => {
   const authContext = useContext(AuthContext);

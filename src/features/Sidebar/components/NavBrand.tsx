@@ -1,5 +1,5 @@
 import { useAppContext } from '@/app/providers/AppProvider';
-import Logo from '@/assets/logo-dark';
+import Logo from '@/features/Sidebar/components/Logo';
 import { Link } from 'react-router';
 
 export default function NavBrand() {

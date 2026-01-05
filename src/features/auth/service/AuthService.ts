@@ -3,7 +3,7 @@ import type {
   AuthRefreshResponse,
   AuthResponse,
   AuthService,
-} from '@/features/auth/types';
+} from '@/features/Auth/types';
 import { httpClient } from '@/shared/api/httpClient';
 import type { HTTPClient } from '@/shared/api/httpClient';
 import { DEFAULT_EXPIRATION } from '../constant';
