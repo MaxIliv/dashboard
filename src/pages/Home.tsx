@@ -6,7 +6,7 @@ import { lazy, Suspense } from 'react';
 import { Link } from 'react-router';
 
 const DynamicChart = lazy(
-  () => import('@/features/Charts/components/DynamicChart')
+  () => import('@/features/charts/components/DynamicChart')
 );
 const RecentUsers = lazy(
   () => import('@/features/Users/components/RecentUsers')
