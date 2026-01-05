@@ -1,6 +1,6 @@
 import { Activity } from 'react';
 import Snowfall from 'react-snowfall';
-import { useSnowfall } from '../Sidebar/SidebarProvider';
+import { useSnowfall } from '../sidebar/SidebarProvider';
 
 export default function SnowfallView() {
   const { isSnowfallEnabled } = useSnowfall();
