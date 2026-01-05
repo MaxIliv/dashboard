@@ -13,11 +13,12 @@ export default function SnowfallToggle() {
         onClick={toggleSnowfall}
         variant="ghost"
         size="lg"
-        className="cursor-pointer px-4 max-w-12"
+        className="cursor-pointer"
       >
         <SnowflakeIcon
-          className={cn('text-blue-300', {
+          className={cn('text-gray-400', {
             'animate-slow-spin': isSnowfallEnabled,
+            'text-blue-300': isSnowfallEnabled,
           })}
         />
       </Button>

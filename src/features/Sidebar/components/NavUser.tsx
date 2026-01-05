@@ -10,7 +10,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { LogOutIcon } from 'lucide-react';
+import {
+  ChevronsUpDown,
+  LogOutIcon,
+} from 'lucide-react';
 
 export default function NavUser() {
   const { logout, me } = useAuthContext();
@@ -24,10 +27,15 @@ export default function NavUser() {
           className="cursor-pointer justify-start px-4"
           size="lg"
         >
-          <Avatar className="w-4 h-4">
+          <Avatar className="w-5 h-5">
             <AvatarImage src={me?.image} alt={me?.username} />
           </Avatar>
-          {!isSidebarCollapsed && me?.username}
+          {!isSidebarCollapsed && (
+            <>
+              <p className="flex-1 text-left">{me?.username}</p>
+              <ChevronsUpDown />
+            </>
+          )}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent side="top" className="w-56" align="start">

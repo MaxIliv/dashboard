@@ -1,9 +1,8 @@
 import { useAppContext } from '@/app/providers/AppProvider';
 import { cn } from '@/lib/utils';
-import Brand from '../../components/Brand';
+import NavBrand from './components/NavBrand';
 import { NavButton } from './NavButton';
 import { mainMenu } from './constants';
-import { Link } from 'react-router';
 import SnowfallView from '../snowfall/SnowfallView';
 import SnowfallToggle from '@/components/SnowfallToggle';
 import { SidebarProvider } from './SidebarProvider';
@@ -22,9 +21,7 @@ export default function Sidebar() {
       >
         <SnowfallView />
 
-        <Link to="/">
-          <Brand />
-        </Link>
+        <NavBrand />
 
         <nav className="px-2">
           <ul className="flex flex-col gap-2">
@@ -40,7 +37,9 @@ export default function Sidebar() {
 
         <div className="px-2">
           <div className="flex flex-col gap-2 justify-start">
-            <SnowfallToggle />
+            <div>
+              <SnowfallToggle />
+            </div>
             <NavUser />
           </div>
         </div>
