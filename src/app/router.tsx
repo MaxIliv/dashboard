@@ -2,6 +2,7 @@ import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router';
 import { Skeleton } from '@/components/ui/skeleton';
 import LoginLayout from '@/layouts/LoginLayout';
+import RootErrorBoundary from './RootErrorBoundary';
 
 export type RouteHandle = {
   title?: string;
@@ -12,6 +13,7 @@ const AuthMainLayout = lazy(() => import('@/layouts/AuthMainLayout'));
 export const router = createBrowserRouter([
   {
     path: '/',
+    ErrorBoundary: RootErrorBoundary,
     Component: AuthMainLayout,
     HydrateFallback: () => <Skeleton />,
     children: [
