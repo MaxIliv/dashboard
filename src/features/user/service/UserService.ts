@@ -1,8 +1,8 @@
-import type { AuthResponse } from '@/features/auth/types';
 import { httpClient, type HTTPClient } from '@/shared/api/httpClient';
+import type { Me } from '../types';
 
 type UserService = {
-  me: () => Promise<AuthResponse>;
+  me: () => Promise<Me>;
 };
 
 export function createUserService(
@@ -10,7 +10,7 @@ export function createUserService(
 ): UserService {
   return {
     me() {
-      return client.get<AuthResponse>('/auth/me').then((res) => res.data);
+      return client.get<Me>('/auth/me').then((res) => res.data);
     },
   };
 }

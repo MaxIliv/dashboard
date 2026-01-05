@@ -3,10 +3,11 @@
 import { authService } from '@/features/auth/service/AuthService';
 import type { AuthPayload, AuthResponse } from '@/features/auth/types';
 import useUser from '@/features/user/hooks/useUser';
+import type { Me } from '@/features/user/types';
 import { createContext, useContext, useState, type ReactNode } from 'react';
 
 type AuthContextValue = {
-  me: AuthResponse | undefined;
+  me: Me | undefined;
   isAuthenticated: boolean;
   login: (e: AuthPayload) => Promise<AuthResponse>;
   logout: () => void;

@@ -1,46 +1,58 @@
-import { RequireAuth } from '@/features/auth/guards/RequireAuth';
-import LoginLayout from '@/layouts/LoginLayout';
-import MainLayout from '@/layouts/MainLayout';
-import ChartsPage from '@/pages/charts/ChartsPage';
-import Home from '@/pages/Home';
-import LoginPage from '@/pages/login/LoginPage';
-import NotFoundPage from '@/pages/not-found/NotFoundPage';
-import StatisticsPage from '@/pages/statistics/StatisticsPage';
-import UsersPage from '@/pages/users/UsersPage';
+import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router';
+import { Skeleton } from '@/components/ui/skeleton';
+import LoginLayout from '@/layouts/LoginLayout';
+import RootErrorBoundary from './RootErrorBoundary';
 
 export type RouteHandle = {
   title?: string;
 };
 
+const AuthMainLayout = lazy(() => import('@/layouts/AuthMainLayout'));
+
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <RequireAuth>
-        <MainLayout />
-      </RequireAuth>
-    ),
+    ErrorBoundary: RootErrorBoundary,
+    Component: AuthMainLayout,
+    HydrateFallback: () => <Skeleton />,
     children: [
       {
         index: true,
-        Component: Home,
-        handle: { title: 'Dashboard' } satisfies RouteHandle,
+        lazy: async () => {
+          const { default: Home } = await import('@/pages/Home');
+          return { Component: Home };
+        },
       },
       {
         path: 'statistics',
         handle: { title: 'Statistics' } satisfies RouteHandle,
-        Component: StatisticsPage,
+        lazy: async () => {
+          const { default: StatisticsPage } = await import(
+            '@/pages/statistics/StatisticsPage'
+          );
+          return { Component: StatisticsPage };
+        },
       },
       {
         path: 'charts',
         handle: { title: 'Charts' } satisfies RouteHandle,
-        Component: ChartsPage,
+        lazy: async () => {
+          const { default: ChartsPage } = await import(
+            '@/pages/charts/ChartsPage'
+          );
+          return { Component: ChartsPage };
+        },
       },
       {
         path: 'users',
         handle: { title: 'Users' } satisfies RouteHandle,
-        Component: UsersPage,
+        lazy: async () => {
+          const { default: UsersPage } = await import(
+            '@/pages/users/UsersPage'
+          );
+          return { Component: UsersPage };
+        },
       },
     ],
   },
@@ -50,12 +62,22 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: LoginPage,
+        lazy: async () => {
+          const { default: LoginPage } = await import(
+            '@/pages/login/LoginPage'
+          );
+          return { Component: LoginPage };
+        },
       },
     ],
   },
   {
     path: '*',
-    element: <NotFoundPage />,
+    lazy: async () => {
+      const { default: NotFoundPage } = await import(
+        '@/pages/not-found/NotFoundPage'
+      );
+      return { Component: NotFoundPage };
+    },
   },
 ]);

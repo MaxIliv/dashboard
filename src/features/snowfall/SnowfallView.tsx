@@ -1,9 +1,9 @@
-import { useAppContext } from '@/app/providers/AppProvider';
 import { Activity } from 'react';
 import Snowfall from 'react-snowfall';
+import { useSnowfall } from '../Sidebar/SidebarProvider';
 
 export default function SnowfallView() {
-  const { isSnowfallEnabled } = useAppContext();
+  const { isSnowfallEnabled } = useSnowfall();
   return (
     <Activity mode={isSnowfallEnabled ? 'visible' : 'hidden'}>
       <Snowfall

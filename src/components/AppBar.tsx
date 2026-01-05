@@ -1,15 +1,14 @@
 import { ThemeToggle } from './ThemeToggle';
-import { usePageTitle } from '@/hooks/usePageTitle';
 import SidebarToggle from '@/features/Sidebar/components/SidebarToggle';
 
-export default function AppBar() {
-  const currentTitle = usePageTitle();
+import AppBreadcrumbs from './AppBreadcrumbs';
 
+export default function AppBar() {
   return (
-    <header className="flex h-16 py-4 px-0 items-center gap-2 border-b">
+    <header className="flex h-16 py-4 px-4 items-center gap-2 border-b mx-4">
       <SidebarToggle />
       <div className="flex gap-2 justify-between flex-1 items-center">
-        <p>{currentTitle}</p>
+        <AppBreadcrumbs />
         <ThemeToggle />
       </div>
     </header>

@@ -17,6 +17,7 @@ export default function useUsersTable() {
   } = useUsers({ page: pagination.pageIndex, limit: pagination.pageSize });
 
   const [sorting, setSorting] = useState<SortingState>([]);
+  const [globalFilter, setGlobalFilter] = useState('')
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
@@ -29,10 +30,12 @@ export default function useUsersTable() {
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
+    onGlobalFilterChange: setGlobalFilter,
     onPaginationChange: setPagination,
     manualPagination: true,
     rowCount: total,
     state: {
+      globalFilter,
       sorting,
       columnFilters,
       columnVisibility,

@@ -1,13 +1,20 @@
-import ChartCard from '@/features/Charts/ChartCard';
-import { LineChartComponent } from '@/features/Charts/LineChart/LineChart';
+import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import CardLoader from '@/features/Statistics/components/CardLoader';
 import MainStatistics from '@/features/Statistics/MainStatistics';
-import RecentUsers from '@/features/Users/components/RecentUsers';
-import { Suspense } from 'react';
+import { lazy, Suspense } from 'react';
+import { Link } from 'react-router';
+
+const DynamicChart = lazy(
+  () => import('@/features/Charts/components/DynamicChart')
+);
+const RecentUsers = lazy(
+  () => import('@/features/Users/components/RecentUsers')
+);
 
 export default function Home() {
   return (
-    <section className="grid gap-8">
+    <section className="grid gap-12">
       <section>
         <h2 className="text-xl mb-4">Users Statistics</h2>
 
@@ -17,16 +24,23 @@ export default function Home() {
       </section>
 
       <section>
-        <h2 className="text-xl mb-4">Users Chart</h2>
-
-        <ChartCard className="w-1/2">
-          <LineChartComponent />
-        </ChartCard>
+        <Suspense fallback={<Skeleton className="h-64" />}>
+          <DynamicChart />
+        </Suspense>
       </section>
 
       <section>
-        <h2 className="text-xl mb-4">Recent Users</h2>
-        <RecentUsers />
+        <div className="flex justify-between">
+          <h2 className="text-xl mb-4">Recent Users</h2>
+
+          <Button asChild variant="link">
+            <Link to="/users">View all</Link>
+          </Button>
+        </div>
+
+        <Suspense fallback={<CardLoader />}>
+          <RecentUsers />
+        </Suspense>
       </section>
     </section>
   );
