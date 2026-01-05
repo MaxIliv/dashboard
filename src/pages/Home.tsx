@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import CardLoader from '@/features/Statistics/components/CardLoader';
-import MainStatistics from '@/features/Statistics/MainStatistics';
+import CardLoader from '@/features/statistics/components/CardLoader';
+import MainStatistics from '@/features/statistics/MainStatistics';
 import { lazy, Suspense } from 'react';
 import { Link } from 'react-router';
 
