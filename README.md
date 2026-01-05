@@ -1,6 +1,18 @@
 # Reface dashboard test app
 Administative panel for displaying and analizing users data;
 
+## Getting Started
+First, run the development server:
+- npm run dev
+
+Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
+
+## Build
+- npm run build
+
+## Preview Build
+- npm run preview
+
 ## Project requirements
 - Create a Web page to display and analize users data
 - App shoud fet data from API and display as interactive administative panel
