@@ -14,10 +14,10 @@ export default function ChartsPage() {
       <h2 className="text-xl">Charts</h2>
 
       <div className="flex gap-4 flex-wrap">
-        <ChartCard className="flex-1 min-w-lg">
+        <ChartCard className="sm:flex-1 sm:min-w-md">
           <LineChartComponent />
         </ChartCard>
-        <ChartCard className="flex-1 min-w-lg">
+        <ChartCard className="sm:flex-1 sm:min-w-md">
           <BarChartComponent />
         </ChartCard>
       </div>
