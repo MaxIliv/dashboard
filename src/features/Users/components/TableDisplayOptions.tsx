@@ -42,9 +42,9 @@ export default function TableDisplayOptions() {
           </SelectGroup>
         </SelectContent>
       </Select>
-      <div>
-        Showing {from} to {to} of {rowsCount} Rows
-      </div>
+      <p className="text-sm">
+        {from} to {to} of {rowsCount} Rows
+      </p>
     </div>
   );
 }
