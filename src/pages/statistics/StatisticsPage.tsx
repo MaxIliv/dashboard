@@ -1,5 +1,5 @@
-import CardLoader from '@/features/Statistics/components/CardLoader';
-import Statistics from '@/features/Statistics/Statistics';
+import CardLoader from '@/features/statistics/components/CardLoader';
+import Statistics from '@/features/statistics/Statistics';
 import { Suspense } from 'react';
 
 const loaderFallback = (

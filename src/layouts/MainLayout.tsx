@@ -1,4 +1,4 @@
-import Sidebar from '@/features/Sidebar/Sidebar';
+import Sidebar from '@/features/sidebar/Sidebar';
 import AppBar from '@/components/AppBar';
 import { Outlet } from 'react-router';
 

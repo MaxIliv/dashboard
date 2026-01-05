@@ -1,5 +1,5 @@
 import { ThemeToggle } from './ThemeToggle';
-import SidebarToggle from '@/features/Sidebar/components/SidebarToggle';
+import SidebarToggle from '@/features/sidebar/components/SidebarToggle';
 
 import AppBreadcrumbs from './AppBreadcrumbs';
 
