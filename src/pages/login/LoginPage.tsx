@@ -5,13 +5,14 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import LoginForm from './LoginForm';
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from '@/components/ui/hover-card';
+import { lazy } from 'react';
 
+const LoginForm = lazy(() => import('./LoginForm'));
 export default function LoginPage() {
   return (
     <>
