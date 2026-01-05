@@ -1,8 +1,8 @@
-import TableDisplayOptions from '@/features/Users/components/TableDisplayOptions';
-import { TablePagination } from '@/features/Users/components/TablePagination';
-import TableSearch from '@/features/Users/components/TableSearch';
-import TableView from '@/features/Users/components/TableView';
-import { UsersTableProvider } from '@/features/Users/context/users-table.provider';
+import TableDisplayOptions from '@/features/users/components/TableDisplayOptions';
+import { TablePagination } from '@/features/users/components/TablePagination';
+import TableSearch from '@/features/users/components/TableSearch';
+import TableView from '@/features/users/components/TableView';
+import { UsersTableProvider } from '@/features/users/context/users-table.provider';
 
 export default function UsersPage() {
   return (

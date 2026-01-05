@@ -9,7 +9,7 @@ const DynamicChart = lazy(
   () => import('@/features/charts/components/DynamicChart')
 );
 const RecentUsers = lazy(
-  () => import('@/features/Users/components/RecentUsers')
+  () => import('@/features/users/components/RecentUsers')
 );
 
 export default function Home() {
