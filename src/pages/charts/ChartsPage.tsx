@@ -2,10 +2,10 @@ import ChartCard from '@/features/charts/ChartCard';
 import { lazy } from 'react';
 
 const LineChartComponent = lazy(
-  () => import('@/features/charts/components/LineChart/LineChart')
+  () => import('@/features/charts/components/LineChart')
 );
 const BarChartComponent = lazy(
-  () => import('@/features/charts/components/BarChart/BarChart')
+  () => import('@/features/charts/components/BarChart')
 );
 
 export default function ChartsPage() {
