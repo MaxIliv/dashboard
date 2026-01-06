@@ -23,7 +23,7 @@ export default function StatisticsCard({
   description,
 }: StatisticsCardProps) {
   return (
-    <Card className="group min-w-48 lg:min-w-64 py-4 relative">
+    <Card className="group min-w-64 py-4 relative max-sm:flex-1">
       <HoverCard>
         <HoverCardTrigger className="absolute right-4 top-4 opacity-0 group-hover:opacity-100">
           <InfoIcon />
