@@ -10,10 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import {
-  ChevronsUpDown,
-  LogOutIcon,
-} from 'lucide-react';
+import { ChevronsUpDown, LogOutIcon } from 'lucide-react';
 
 export default function NavUser() {
   const { logout, me } = useAuthContext();
@@ -54,6 +51,11 @@ export default function NavUser() {
           <span className="text-muted-foreground truncate text-xs">
             {me?.role}
           </span>
+        </DropdownMenuLabel>
+        <DropdownMenuLabel>
+          <footer className="text-xs text-muted-foreground">
+            app v{__APP_VERSION__}
+          </footer>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={logout}>
