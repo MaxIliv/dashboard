@@ -29,7 +29,7 @@ export default function Home() {
         </Suspense>
       </section>
 
-      <section>
+      <section className="overflow-x-auto">
         <div className="flex justify-between">
           <h2 className="text-xl mb-4">Recent Users</h2>
 
