@@ -16,7 +16,7 @@ export default function Sidebar() {
       <aside
         className={cn('p-2 flex flex-col gap-8 relative bg-sidebar flex-0 grow-0', {
           'min-w-48': !isSidebarCollapsed,
-          'w-20': isSidebarCollapsed,
+          'max-sm:hidden sm:w-20': isSidebarCollapsed,
         })}
       >
         <SnowfallView />
