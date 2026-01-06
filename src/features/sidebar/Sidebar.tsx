@@ -14,9 +14,9 @@ export default function Sidebar() {
   return (
     <SidebarProvider>
       <aside
-        className={cn('p-2 w-full flex flex-col gap-8 relative bg-sidebar', {
-          'max-w-64': !isSidebarCollapsed,
-          'flex-0': isSidebarCollapsed,
+        className={cn('p-2 flex flex-col gap-8 relative bg-sidebar flex-0 grow-0', {
+          'min-w-48': !isSidebarCollapsed,
+          'w-20': isSidebarCollapsed,
         })}
       >
         <SnowfallView />
